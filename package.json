@@ -1,0 +1,39 @@
+{
+  "name": "start-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode development --config scripts/webpack.config.js",
+    "dev": "webpack-dev-server --mode development --config scripts/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/clariceBYgit/start-webpack.git"
+  },
+  "author": "by",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clariceBYgit/start-webpack/issues"
+  },
+  "homepage": "https://github.com/clariceBYgit/start-webpack#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "css-loader": "^3.5.3",
+    "less": "^3.11.1",
+    "less-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^4.2.0"
+  },
+  "browserslist": [
+    "last 2 version"
+  ]
+}
