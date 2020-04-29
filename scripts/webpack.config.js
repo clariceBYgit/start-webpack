@@ -4,6 +4,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 如何将css文件单独生成到dist文件夹下？--->解决：webpack 4之后  npm install --save-dev mini-css-extract-plugin
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// 处理静态资源，不需要进行打包
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 // 由于没有babel进行编译
@@ -67,7 +69,7 @@ module.exports = {
               {
                 loader: 'url-loader', //注意：url-loader中其实已经包含了file-loader，可以将file的配置写入url中
                 options: {
-                  limit: 80, //小于80的 才会转成dataUrl(url-loader)，大于的则使用原文件copy的方式（file-loader）生成对应的images文件以及图片.
+                  limit: 80, //小于80的 才会转成dataUrl(url-loader)，大于的则使用原文件copy的方式（file-loader）生成对应的images文件以及图片
                   
                   name:'static/images/[name].[ext]',
                   publicPath: '/'
@@ -87,7 +89,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             // 
             filename: 'static/css/[name].[chunkHash:8].css'
-        })
+        }),
+        // 处理静态资源，不需要进行打包
+        new CopyPlugin([
+          { 
+            from: path.resolve(process.cwd(),'src/source/'),
+            to: path.resolve(process.cwd(),'dist/static/images/')
+          }
+        ]),
     ],
     // 配置服务器的端口号
     devServer:{

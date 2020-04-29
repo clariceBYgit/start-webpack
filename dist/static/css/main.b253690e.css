@@ -1,0 +1,30 @@
+body {
+  background-image: url(/static/images/01.jpg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+h1{
+    color: springgreen;
+}
+
+::-webkit-input-placeholder{
+    color:black;
+}
+
+::-moz-placeholder{
+    color:black;
+}
+
+:-ms-input-placeholder{
+    color:black;
+}
+
+::-ms-input-placeholder{
+    color:black;
+}
+
+::placeholder{
+    color:black;
+}
