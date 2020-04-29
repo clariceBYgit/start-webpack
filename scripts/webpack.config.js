@@ -24,7 +24,7 @@ module.exports = {
         // 问题：其生成的hash值一样  ---->  解决:改为chunkHash
         // filename: '[name].[hash:8].js'  
         // 指定生成的js文件的位置
-        filename: 'js/[name].[chunkHash:8].js'
+        filename: 'static/js/[name].[chunkHash:8].js'
     },
     module:{
         rules:[
@@ -45,7 +45,36 @@ module.exports = {
               'less-loader'
             ],
           },
-          
+        //   对图片的处理 方式一：file-loader
+        
+        //   {
+        //     test: /\.(png|jpe?g|gif)$/i,
+        //     use: [
+        //       {
+        //         loader: 'file-loader',
+        //         options: {
+        //             // 图处理后的位置指定
+        //             name:'static/images/[name].[ext]',
+        //             publicPath: '/'
+        //         }
+        //       },
+        //     ],
+        //   },
+        //   对图片的处理 方式二：url-loader 
+        {
+            test: /\.(png|jpg|gif)$/i,
+            use: [
+              {
+                loader: 'url-loader', //注意：url-loader中其实已经包含了file-loader，可以将file的配置写入url中
+                options: {
+                  limit: 80, //小于80的 才会转成dataUrl(url-loader)，大于的则使用原文件copy的方式（file-loader）生成对应的images文件以及图片.
+                  
+                  name:'static/images/[name].[ext]',
+                  publicPath: '/'
+                },
+              },
+            ],
+          },
         ]
     }
     ,
@@ -57,7 +86,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             // 
-            filename: 'css/[name].[chunkHash:8].css'
+            filename: 'static/css/[name].[chunkHash:8].css'
         })
     ],
     // 配置服务器的端口号
