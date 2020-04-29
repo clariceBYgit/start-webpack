@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development --config scripts/webpack.config.js",
-    "dev": "webpack-dev-server --mode development --config scripts/webpack.config.js",
+    "build": "webpack --mode development --config scripts/webpack.config.prod.js",
+    "dev": "webpack-dev-server --mode development --config scripts/webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/clariceBYgit/start-webpack#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
